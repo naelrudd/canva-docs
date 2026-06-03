@@ -1,0 +1,14 @@
+# Graphify output
+graphify-out/
+.graphify_*
+
+# Graphify fork (install via pip instead)
+graphify/
+
+# Environment files
+.env
+.env.local
+
+# OS
+.DS_Store
+Thumbs.db
