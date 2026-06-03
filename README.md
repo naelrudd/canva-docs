@@ -77,4 +77,6 @@ Output lands in `graphify-out/`:
 
 The markdown files are sourced from [Canva Developers](https://www.canva.dev/docs/) and are subject to Canva's terms.
 
-The [graphify](https://github.com/safishamsi/graphify) tool in this repo is MIT-licensed.
+The wrapper scripts and configuration in this repo (`_run_graphify.py`, `.env.example`, etc.) are MIT-licensed — see [LICENSE](LICENSE).
+
+The [graphify](https://github.com/safishamsi/graphify) tool is MIT-licensed.
