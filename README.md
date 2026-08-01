@@ -1,52 +1,56 @@
-# Canva Developers Documentation — LLM-Ready Markdown Dump
+# Canva Developers Documentation — LLM-Ready Markdown
 
-**377 markdown files** covering every page from the [Canva Developers documentation](https://www.canva.dev/docs/).
+An unofficial, machine-readable mirror of the official [Canva Developers documentation](https://www.canva.dev/docs/) — **391 pages** mirrored as plain Markdown, organized 1:1 by URL path, for **LLM ingestion, RAG pipelines, and knowledge graph exploration**.
 
-This repo is designed for **LLM ingestion, RAG pipelines, and knowledge graph exploration** — so AI assistants can answer questions about Canva's developer platform without hitting API rate limits or crawling docs on the fly.
+AI assistants can answer questions about Canva's developer platform without hitting API rate limits or crawling docs on the fly.
 
 ## Contents
 
-| Section | Files | Source |
+| Section | Pages | Source |
 |---------|-------|--------|
-| **Apps SDK** | 200+ pages | [/docs/apps/](https://www.canva.dev/docs/apps/) |
-| **Connect APIs** | 80+ pages | [/docs/connect/](https://www.canva.dev/docs/connect/) |
-| **MCP** | 6 pages | [/docs/mcp/](https://www.canva.dev/docs/mcp/) |
-| **SCIM API** | 13 pages | [/docs/scim/](https://www.canva.dev/docs/scim/) |
-| **Audit Logs** | 22 pages | [/docs/audit-logs/](https://www.canva.dev/docs/audit-logs/) |
+| **Apps SDK** | 209 | [`docs/apps/`](docs/apps.md) |
+| **Connect APIs** | 120 | [`docs/connect/`](docs/connect.md) |
+| **MCP** | 7 | [`docs/mcp/`](docs/mcp.md) |
+| **SCIM API** | 15 | [`docs/scim/`](docs/scim.md) |
+| **Audit Logs** | 24 | [`docs/audit-logs/`](docs/audit-logs.md) |
+| **Print API** | 16 | [`docs/print/`](docs/print.md) |
+| **Docs home** | — | [`docs.md`](docs.md) |
+
+Each page is a Markdown file with a `Source:` header linking back to the original URL. The folder tree mirrors `www.canva.dev/docs/...` exactly, so `docs/apps/quickstart.md` ↔ `https://www.canva.dev/docs/apps/quickstart/`.
 
 ## Quick Start
 
 ```bash
-# Clone
 git clone https://github.com/naelrudd/canva-docs.git
 cd canva-docs
 
 # Feed the markdown files directly to your LLM
-cat *.md | your-llm-prompt
+cat docs/apps/*.md | your-llm-prompt
 
-# Or use with a RAG tool like graphify (see graphify/ folder)
-```
-
-## Using with LangChain / LlamaIndex / Custom RAG
-
-All files are flat markdown with no frontmatter. Each file has a `Source:` header linking back to the original URL.
-
-```python
-from langchain_community.document_loaders import DirectoryLoader
-
-loader = DirectoryLoader("path/to/canva-docs", glob="**/*.md")
-docs = loader.load()
+# Or explore a section
+ls docs/connect/api-reference/
 ```
 
 ## Using as Context for Claude / ChatGPT / Gemini
 
 ```bash
 # Concatenate everything
-cat *.md > canva-docs-complete.txt
+cat docs/**/*.md docs.md > canva-docs-complete.txt
 
 # Or select a section
-cat docs-apps-*.md > apps-sdk.txt
+cat docs/apps/**/*.md > apps-sdk.txt
 ```
+
+## Using with LangChain / LlamaIndex / Custom RAG
+
+```python
+from langchain_community.document_loaders import DirectoryLoader
+
+loader = DirectoryLoader("path/to/canva-docs/docs", glob="**/*.md")
+docs = loader.load()
+```
+
+For discovery, start from [`llms.txt`](llms.txt) (official index) or the curated [`INDEX.md`](INDEX.md).
 
 ## Knowledge Graph
 
@@ -73,10 +77,22 @@ Output lands in `graphify-out/`:
 - **GRAPH_REPORT.md** — audit report with god nodes and community analysis
 - **manifest.json** — incremental extraction cache (re-run is free for unchanged files)
 
-## License
+## Updating
 
-The markdown files are sourced from [Canva Developers](https://www.canva.dev/docs/) and are subject to Canva's terms.
+Re-mirror from the official index:
 
-The wrapper scripts and configuration in this repo (`_run_graphify.py`, `.env.example`, etc.) are MIT-licensed — see [LICENSE](LICENSE).
+```bash
+curl -sL -o llms.txt https://www.canva.dev/docs/llms.txt
+# each section has its own llms.txt, e.g.
+#   https://www.canva.dev/docs/apps/llms.txt
+#   https://www.canva.dev/docs/connect/llms.txt
+#   https://www.canva.dev/docs/print/llms.txt
+# parse each https://www.canva.dev/docs/*.md link and download, preserving the URL path
+```
 
-The [graphify](https://github.com/safishamsi/graphify) tool is MIT-licensed.
+## License & attribution
+
+- This repository is **not affiliated with, endorsed by, or sponsored by Canva Pty Ltd.**
+- All documentation content is © Canva Pty Ltd. and belongs to its respective owners. See [NOTICE.md](NOTICE.md).
+- The wrapper scripts and configuration (`_run_graphify.py`, `.env.example`, etc.) are MIT-licensed — see [LICENSE](LICENSE).
+- The [graphify](https://github.com/safishamsi/graphify) tool is MIT-licensed.

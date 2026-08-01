@@ -2,6 +2,11 @@ MIT License
 
 Copyright (c) 2026 naelrudd
 
+Scope: This license applies ONLY to the wrapper scripts, configuration,
+and tooling written by this repository's authors (e.g. `_run_graphify.py`,
+`.env.example`, `AGENTS.md`). It does NOT apply to the documentation
+content under `docs/`, which is © Canva Pty Ltd. — see NOTICE.md.
+
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights

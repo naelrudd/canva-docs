@@ -1,0 +1,32 @@
+# Canva Developers Documentation
+
+This file lists documentation for Canva products available on [canva.dev](https://www.canva.dev/docs/), with links to their respective llms.txt files and overview pages.
+
+## Apps SDK
+
+- [Apps SDK documentation](https://www.canva.dev/docs/apps/llms.txt)
+- [Overview](https://www.canva.dev/docs/apps.md)
+- [Quickstart](https://www.canva.dev/docs/apps/quickstart.md)
+
+## Connect APIs
+
+- [Connect APIs documentation](https://www.canva.dev/docs/connect/llms.txt)
+- [Overview](https://www.canva.dev/docs/connect.md)
+- [Quickstart](https://www.canva.dev/docs/connect/quickstart.md)
+
+## Audit Logs
+
+- [Audit Logs documentation](https://www.canva.dev/docs/audit-logs/llms.txt)
+- [Overview](https://www.canva.dev/docs/audit-logs.md)
+- [Setup](https://www.canva.dev/docs/audit-logs/setup.md)
+
+## SCIM API
+
+- [SCIM API documentation](https://www.canva.dev/docs/scim/llms.txt)
+- [Overview](https://www.canva.dev/docs/scim.md)
+
+## Print API
+
+- [Print API documentation](https://www.canva.dev/docs/print/llms.txt)
+- [Overview](https://www.canva.dev/docs/print.md)
+
