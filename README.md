@@ -1,6 +1,6 @@
 # Canva Developers Documentation — LLM-Ready Markdown
 
-An unofficial, machine-readable mirror of the official [Canva Developers documentation](https://www.canva.dev/docs/) — **391 pages** mirrored as plain Markdown, organized 1:1 by URL path, for **LLM ingestion, RAG pipelines, and knowledge graph exploration**.
+An unofficial, machine-readable mirror of the official [Canva Developers documentation](https://www.canva.dev/docs/) — **392 pages** mirrored as plain Markdown, organized 1:1 by URL path, for **LLM ingestion, RAG pipelines, and knowledge graph exploration**.
 
 AI assistants can answer questions about Canva's developer platform without hitting API rate limits or crawling docs on the fly.
 
@@ -50,7 +50,20 @@ loader = DirectoryLoader("path/to/canva-docs/docs", glob="**/*.md")
 docs = loader.load()
 ```
 
-For discovery, start from [`llms.txt`](llms.txt) (official index) or the curated [`INDEX.md`](INDEX.md).
+For discovery, start from [`llms.txt`](llms.txt) (official index) or the curated [`INDEX.md`](INDEX.md). For the entire corpus in a single file, use [`llms-full.txt`](llms-full.txt).
+
+## RAG Starter Kit
+
+Local semantic search over the docs:
+
+```bash
+pip install chromadb
+python rag.py build                    # index Markdown pages into ./rag_chroma
+python rag.py query "your question"    # retrieve top-k relevant chunks
+python rag.py info                     # corpus stats
+```
+
+Re-running `build` is idempotent and incremental.
 
 ## Knowledge Graph
 
